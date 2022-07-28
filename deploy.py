@@ -1,21 +1,3 @@
-#!/usr/bin/python3
-#
-# Copyright (C) 2019 Oleg Shnaydman
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#       http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
-
 import os
 import argparse
 import requests
@@ -64,7 +46,6 @@ def upload_to_dropbox(target_file_name, source_file, dropbox_token, dropbox_fold
         source_file (str): File that is going to be uploaded.
         dropbox_token (str): Dropbox API key.
         dropbox_folder (str): Dropbox target folder.
-
     Returns:
         str: Shared url for download.
     '''
@@ -113,7 +94,6 @@ def send_email(zapier_hook, to, subject, body):
         to (str): Email recipients separated by comma.
         subject (str): Email subject.
         body (str): Email body.
-
     Returns:
         bool: Send success/fail.
     '''
@@ -133,13 +113,12 @@ def get_app(release_dir):
     
     Args:
         release_dir (str): Path to release directory.
-
     Returns:
         (str, str): App version and path to release apk file.
     '''
     output_path = os.path.join(release_dir, 'output-metadata.json')
 
-       with(open(output_path)) as app_output:
+    with(open(output_path)) as app_output:
         json_data = json.load(app_output)
 
     apk_details_key = ''
@@ -165,7 +144,6 @@ def get_target_file_name(app_name, app_version):
     Args:
         app_name (str): App name.
         app_version (str): App version.
-
     Returns:
         str: App file name.
     '''
@@ -177,10 +155,8 @@ def get_target_file_name(app_name, app_version):
 def get_changes(change_log_path):
     '''Extract latest changes from changelog file.
     Changes are separated by ##
-
     Args:
         change_log_path (str): Path to changelog file.
-
     Returns:
         str: Latest changes.
     '''
@@ -196,14 +172,12 @@ def get_changes(change_log_path):
 
 def get_email(app_name, app_version, app_url, changes, template_file_path):
     '''Use template file to create release email subject and title.
-
     Args:
         app_name (str): App name.
         app_version (str): App version.
         app_url (str): Url for app download.
         changes (str): Lastest app changelog.
         template_file_path (str): Path to template file.
-
     Returns:
         (str, str): Email subject and email body.
     '''
