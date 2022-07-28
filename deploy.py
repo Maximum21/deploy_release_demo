@@ -139,8 +139,11 @@ def get_app(release_dir):
     '''
     output_path = os.path.join(release_dir, 'output-metadata.json')
 
-       print(with(open(output_path)))
+       with(open(output_path)) as app_output:
+        json_data = json.load(app_output)
   
+    print(json_data["version"])
+
     apk_details_key = ''
     if 'apkInfo' in json_data[0]:
         apk_details_key = 'apkInfo'
