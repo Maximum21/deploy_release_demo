@@ -11,7 +11,7 @@ CHANGES_ERROR_CODE = 4
 OUTPUT_FILE_PARSING_ERROR = 5
 
 DROPBOX_UPLOAD_ARGS = {
-    'path': /Apps/catalog_test_App,
+    'path': None,
     'mode': 'Add'
     'autorename': True,
     'strict_conflict': True
@@ -19,7 +19,7 @@ DROPBOX_UPLOAD_ARGS = {
 DROPBOX_UPLOAD_URL = 'https://content.dropboxapi.com/2/files/upload'
 
 DROPBOX_SHARE_DATA = {
-    'path': /Apps/catalog_test_App,
+    'path': None,
     'settings': {
         'requested_visibility': 'public'
     }
@@ -228,8 +228,6 @@ if __name__ == '__main__':
     if app_version == None or app_file == None:
         exit(OUTPUT_FILE_PARSING_ERROR)
     
-    target_app_file = "testfile"
-    print(target_app_file)
     # Upload app file and get shared url
     file_url = upload_to_dropbox(target_app_file, app_file, options.dropbox_token, options.dropbox_folder)
     if file_url == None:
