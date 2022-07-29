@@ -229,10 +229,12 @@ if __name__ == '__main__':
 
     # Upload app file and get shared url
     file_url = upload_to_dropbox(target_app_file, app_file, options.dropbox_token, options.dropbox_folder)
-print(file_url)
+
     if file_url == None:
         exit(DROPBOX_ERROR_CODE)
-    
+    else
+        print(file_url)
+
     # Extract latest changes
     latest_changes = get_changes(options.changelog_file)
     if latest_changes == None:
