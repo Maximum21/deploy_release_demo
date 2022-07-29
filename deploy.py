@@ -27,7 +27,7 @@ DROPBOX_SHARE_DATA = {
 DROPBOX_SHARE_URL = 'https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings'
 
 DROPBOX_DELETE_DATA = {
-    'path' : /Apps/catalog_test_App
+    'path' : None
 }
 DROPBOX_DELETE_URL = 'https://api.dropboxapi.com/2/files/delete_v2'
 
