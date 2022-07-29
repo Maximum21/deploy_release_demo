@@ -226,7 +226,7 @@ if __name__ == '__main__':
         exit(OUTPUT_FILE_PARSING_ERROR)
     
     target_app_file = get_target_file_name(options.app_name, app_version)
-
+    print(target_app_file)
     # Upload app file and get shared url
     file_url = upload_to_dropbox(target_app_file, app_file, options.dropbox_token, options.dropbox_folder)
     if file_url == None:
@@ -242,6 +242,7 @@ if __name__ == '__main__':
     if subject == None or body == None:
         exit(TEMPLATE_ERROR_CODE)
     
+    print(subject)
     # Send email with release data
     if not send_email(options.zapier_hook, options.email_to, subject, body):
         exit(ZAPIER_ERROR_CODE)
