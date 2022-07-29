@@ -11,15 +11,15 @@ CHANGES_ERROR_CODE = 4
 OUTPUT_FILE_PARSING_ERROR = 5
 
 DROPBOX_UPLOAD_ARGS = {
-    'path': None,
-    'mode': 'overwrite',
+    'path': /Apps/catalog_test_App,
+    'mode': 'Add'
     'autorename': True,
     'strict_conflict': True
 }
 DROPBOX_UPLOAD_URL = 'https://content.dropboxapi.com/2/files/upload'
 
 DROPBOX_SHARE_DATA = {
-    'path': None,
+    'path': /Apps/catalog_test_App,
     'settings': {
         'requested_visibility': 'public'
     }
@@ -27,7 +27,7 @@ DROPBOX_SHARE_DATA = {
 DROPBOX_SHARE_URL = 'https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings'
 
 DROPBOX_DELETE_DATA = {
-    'path' : None
+    'path' : /Apps/catalog_test_App
 }
 DROPBOX_DELETE_URL = 'https://api.dropboxapi.com/2/files/delete_v2'
 
@@ -59,7 +59,9 @@ def upload_to_dropbox(target_file_name, source_file, dropbox_token, dropbox_fold
     headers = {'Authorization': 'Bearer ' + dropbox_token,
             'Content-Type': 'application/json'}
     
-    requests.post(DROPBOX_DELETE_URL, data=json.dumps(DROPBOX_DELETE_DATA), headers=headers)
+    new = requests.post(DROPBOX_DELETE_URL, data=json.dumps(DROPBOX_DELETE_DATA), headers=headers)
+	print("delete call")
+	print(new.json())
 
     headers = {'Authorization': 'Bearer ' + dropbox_token,
                'Dropbox-API-Arg': json.dumps(DROPBOX_UPLOAD_ARGS),
@@ -67,7 +69,8 @@ def upload_to_dropbox(target_file_name, source_file, dropbox_token, dropbox_fold
 
     # Upload the file
     r = requests.post(DROPBOX_UPLOAD_URL, data=open(source_file, 'rb'), headers=headers)
-
+	print("upload call")
+	print(r.json())
     if r.status_code != requests.codes.ok:
         print("Failed: upload file to Dropbox: {errcode}".format(errcode=r.status_code))
         return None
