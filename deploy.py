@@ -231,9 +231,8 @@ if __name__ == '__main__':
     file_url = upload_to_dropbox(target_app_file, app_file, options.dropbox_token, options.dropbox_folder)
 
     if file_url == None:
-        exit(DROPBOX_ERROR_CODE)
-    else
         print(file_url)
+        exit(DROPBOX_ERROR_CODE)
 
     # Extract latest changes
     latest_changes = get_changes(options.changelog_file)
