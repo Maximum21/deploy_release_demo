@@ -121,7 +121,7 @@ def get_app(release_dir):
     with(open(output_path)) as app_output:
         json_data = json.load(app_output)
 	
-    app_version = "["+json_data['elements'][0]['versionCode']+"-"+json_data['elements'][0]['versionName']+"]"
+    app_version = "["+str(json_data['elements'][0]['versionCode'])+"-"+str(json_data['elements'][0]['versionName'])+"]"
     app_file = os.path.join(release_dir, json_data['elements'][0]['outputFile'])
     return app_version, app_file
 
