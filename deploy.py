@@ -12,7 +12,7 @@ OUTPUT_FILE_PARSING_ERROR = 5
 
 DROPBOX_UPLOAD_ARGS = {
     'path': None,
-    'mode': 'Add',
+    'mode': 'add',
     'autorename': True,
     'strict_conflict': True
 }
